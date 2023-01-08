@@ -1,18 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { songsReducer } from "./slices/songsSlice";
-import { moviesReducer, removeMovie, addMovie } from "./slices/moviesSlice";
-export const store = configureStore({
+import {
+  carsReducer,
+  addCar,
+  removeCar,
+  changeSearchTerm,
+} from "./slices/carsSlice";
+import { formReducer, changeName, changeCost } from "./slices/formSlice";
+
+const store = configureStore({
   reducer: {
-    counter: songsReducer.reducer,
-    movies: moviesReducer.reducer,
+    cars: carsReducer,
+    form: formReducer,
   },
 });
 
-console.log(store.getState());
-
-export { addMovie, removeMovie };
-// const res = useSelect(() => {
-//   return state.value;
-// });
-
-// console.log(res);
+export { store, changeName, changeCost, addCar, removeCar, changeSearchTerm };
