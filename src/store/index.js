@@ -1,17 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import {
-  carsReducer,
-  addCar,
-  removeCar,
-  changeSearchTerm,
-} from "./slices/carsSlice";
-import { formReducer, changeName, changeCost } from "./slices/formSlice";
 
-const store = configureStore({
+import { userReducer } from "./slices/usersSlice";
+
+export const store = configureStore({
   reducer: {
-    cars: carsReducer,
-    form: formReducer,
+    users: userReducer,
   },
 });
 
-export { store, changeName, changeCost, addCar, removeCar, changeSearchTerm };
+export * from "./thunks/fetchUsers";
+export * from "./thunks/addUsers";
+export * from "./thunks/removeUser";

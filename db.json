@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Myra"
+    },
+    {
+      "name": "Keith Berge",
+      "id": 2
+    },
+    {
+      "name": "Miss Jason Hayes",
+      "id": 3
+    },
+    {
+      "name": "Derrick Dibbert",
+      "id": 4
+    },
+    {
+      "name": "Robin Kohler",
+      "id": 5
+    },
+    {
+      "name": "Miss Ian Dare",
+      "id": 6
+    }
+  ],
+  "albums": [],
+  "photos": []
+}
