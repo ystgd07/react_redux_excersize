@@ -25,6 +25,57 @@
       "id": 6
     }
   ],
-  "albums": [],
+  "albums": [
+    {
+      "id": 10,
+      "title": "Hiking Trip",
+      "userId": 1
+    },
+    {
+      "userId": 1,
+      "title": "Oriental Cotton Cheese",
+      "id": 11
+    },
+    {
+      "userId": 1,
+      "title": "Ergonomic Plastic Sausages",
+      "id": 12
+    },
+    {
+      "userId": 1,
+      "title": "Fantastic Soft Car",
+      "id": 13
+    },
+    {
+      "userId": 1,
+      "title": "Intelligent Soft Fish",
+      "id": 14
+    },
+    {
+      "userId": 1,
+      "title": "Handcrafted Fresh Fish",
+      "id": 15
+    },
+    {
+      "userId": 1,
+      "title": "Refined Wooden Shirt",
+      "id": 16
+    },
+    {
+      "userId": 1,
+      "title": "Licensed Rubber Sausages",
+      "id": 17
+    },
+    {
+      "userId": 2,
+      "title": "Generic Bronze Ball",
+      "id": 18
+    },
+    {
+      "userId": 1,
+      "title": "Generic Bronze Fish",
+      "id": 19
+    }
+  ],
   "photos": []
 }
