@@ -1,39 +1,67 @@
-import {createApi,fetchBaseQuery} from '@reduxjs/toolkit/query/react'
-import { faker } from '@faker-js/faker'
-const albumsApi=createApi({
-  reducerPath:'albums',
-  baseQuery:fetchBaseQuery({
-    baseUrl:'http://localhost:3005'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { faker } from '@faker-js/faker';
+
+
+
+const albumsApi = createApi({
+  reducerPath: 'albums',
+  baseQuery: fetchBaseQuery({
+    baseUrl: 'http://localhost:3005',
+
   }),
-  endpoints(builder){
+  endpoints(builder) {
     return {
-      addAlbum:builder.mutation({
-        query:(user)=>{
+      removeAlbum: builder.mutation({
+        invalidatesTags: (result, error, album) => {
+          return [{ type: 'Album', id: album.id }];
+        },
+        query: (album) => {
           return {
-            url:'/albums',
-            method:'POST',
-            body:{
-              userId:user.id,
-              title:faker.commerce.productName()
-            }
-          }
-        }
+            url: `/albums/${album.id}`,
+            method: 'DELETE',
+          };
+        },
       }),
-      fetchAlbums:builder.query({
-        query:(user)=>{
+      addAlbum: builder.mutation({
+        invalidatesTags: (result, error, user) => {
+          return [{ type: 'UsersAlbums', id: user.id }];
+        },
+        query: (user) => {
           return {
-            url:'/albums',
-            params:{
-              userId:user.id
+            url: '/albums',
+            method: 'POST',
+            body: {
+              userId: user.id,
+              title: faker.commerce.productName(),
             },
-            method:'GET'
-          }
-        }
-      })
-    }
-  }
-})
+          };
+        },
+      }),
+      fetchAlbums: builder.query({
+        providesTags: (result, error, user) => {
+          const tags = result.map((album) => {
+            return { type: 'Album', id: album.id };
+          });
+          tags.push({ type: 'UsersAlbums', id: user.id });
+          return tags;
+        },
+        query: (user) => {
+          return {
+            url: '/albums',
+            params: {
+              userId: user.id,
+            },
+            method: 'GET',
+          };
+        },
+      }),
+    };
+  },
+});
 
-
-export const {useFetchAlbumsQuery,useAddAlbumMutation}=albumsApi
-export {albumsApi}
+export const {
+  useFetchAlbumsQuery,
+  useAddAlbumMutation,
+  useRemoveAlbumMutation,
+} = albumsApi;
+export { albumsApi };
